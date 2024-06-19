@@ -29,7 +29,7 @@ function NavLink(navlinkProps: navLinkProps) {
             {!navlinkProps.dropdown && (
                 <Link
                     href={`${navlinkProps.to}`}
-                    className="font-audiowide font-medium text-base text-[#050B20] p-3"
+                    className="font-poppins font-medium text-base text-[#050B20] p-3"
                 >
                     {navlinkProps.name}
                 </Link>
@@ -38,7 +38,7 @@ function NavLink(navlinkProps: navLinkProps) {
                 <div className="relative flex flex-col items-start justify-start">
                     <div className="flex flex-row justify-start items-center gap-1 cursor-pointer p-3 rounded-lg rounded-b-[0]
                                     transition-all duration-500 group-hover:bg-[#E9F2FF] group-hover:shadow-lg ">
-                        <p className="font-audiowide font-medium text-base text-[#050B20]">
+                        <p className="font-poppins font-medium text-base text-[#050B20]">
                             {navlinkProps.name}
                         </p>
                         <Image src={downArrow} alt="Arrow icon." width={20} className={'transition duration-500 rotate-0 group-hover:rotate-180'}/>
@@ -50,7 +50,7 @@ function NavLink(navlinkProps: navLinkProps) {
                                 {navlinkProps.dropdownItem1Icon && (
                                     <Image src={navlinkProps.dropdownItem1Icon} alt="Dropdown menu icon." width={30} />
                                 )}
-                                <p className="font-audiowide font-medium text-base text-[#050B20] text-nowrap">{navlinkProps.dropdownItem1}</p>
+                                <p className="font-poppins font-medium text-base text-[#050B20] text-nowrap">{navlinkProps.dropdownItem1}</p>
                             </Link>
                         )}
                         {navlinkProps.dropdownItem2 && (
@@ -58,7 +58,7 @@ function NavLink(navlinkProps: navLinkProps) {
                                 {navlinkProps.dropdownItem2Icon && (
                                     <Image src={navlinkProps.dropdownItem2Icon} alt="Dropdown menu icon." width={30} />
                                 )}
-                                <p className="font-audiowide font-medium text-base text-[#050B20] text-nowrap">{navlinkProps.dropdownItem2}</p>
+                                <p className="font-poppins font-medium text-base text-[#050B20] text-nowrap">{navlinkProps.dropdownItem2}</p>
                             </Link>
                         )}
                         {navlinkProps.dropdownItem3 && (
@@ -66,7 +66,7 @@ function NavLink(navlinkProps: navLinkProps) {
                                 {navlinkProps.dropdownItem3Icon && (
                                     <Image src={navlinkProps.dropdownItem3Icon} alt="Dropdown menu icon." width={30} />
                                 )}
-                                <p className="font-audiowide font-medium text-base text-[#050B20] text-nowrap">{navlinkProps.dropdownItem3}</p>
+                                <p className="font-poppins font-medium text-base text-[#050B20] text-nowrap">{navlinkProps.dropdownItem3}</p>
                             </Link>
                         )}
                         {navlinkProps.dropdownItem4 && (
@@ -74,7 +74,7 @@ function NavLink(navlinkProps: navLinkProps) {
                                 {navlinkProps.dropdownItem4Icon && (
                                     <Image src={navlinkProps.dropdownItem4Icon} alt="Dropdown menu icon." width={30} />
                                 )}
-                                <p className="font-audiowide font-medium text-base text-[#050B20] text-nowrap">{navlinkProps.dropdownItem4}</p>
+                                <p className="font-poppins font-medium text-base text-[#050B20] text-nowrap">{navlinkProps.dropdownItem4}</p>
                             </Link>
                         )}
                         {navlinkProps.dropdownItem5 && (
@@ -82,7 +82,7 @@ function NavLink(navlinkProps: navLinkProps) {
                                 {navlinkProps.dropdownItem5Icon && (
                                     <Image src={navlinkProps.dropdownItem5Icon} alt="Dropdown menu icon." width={30} />
                                 )}
-                                <p className="font-audiowide font-medium text-base text-[#050B20] text-nowrap">{navlinkProps.dropdownItem5}</p>
+                                <p className="font-poppins font-medium text-base text-[#050B20] text-nowrap">{navlinkProps.dropdownItem5}</p>
                             </Link>
                         )}
                         {navlinkProps.dropdownItem6 && (
@@ -90,7 +90,7 @@ function NavLink(navlinkProps: navLinkProps) {
                                 {navlinkProps.dropdownItem6Icon && (
                                     <Image src={navlinkProps.dropdownItem6Icon} alt="Dropdown menu icon." width={30} />
                                 )}
-                                <p className="font-audiowide font-medium text-base text-[#050B20] text-nowrap">{navlinkProps.dropdownItem6}</p>
+                                <p className="font-poppins font-medium text-base text-[#050B20] text-nowrap">{navlinkProps.dropdownItem6}</p>
                             </Link>
                         )}
                     </div>
