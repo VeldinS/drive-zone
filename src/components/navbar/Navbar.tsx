@@ -19,10 +19,17 @@ import buy from '@/assets/icons/buy-car.svg';
 import popular from '@/assets/icons/popular.svg';
 import contact from '@/assets/icons/contact.svg';
 
+import suv from '@/assets/car types/suv.svg';
+import sedan from '@/assets/car types/sedan.svg';
+import hatchback from '@/assets/car types/hatchbag.svg';
+import hybrid from '@/assets/car types/hybrid.svg';
+import coupe from '@/assets/car types/coupe.svg';
+
+
 
 function Navbar() {
     return (
-        <nav className={'w-full h-auto py-4 px-[10%] flex flex-row justify-between items-center bg-transparent'}>
+        <nav className={'w-full h-auto py-4 px-[5%] flex flex-row justify-between items-center bg-transparent'}>
             <div className={'flex flex-row justify-start items-center gap-6'}>
                 <Image src={logo} alt="Logo image." width="150" />
                 <NavLink dropdown={true} name={'Home'}
@@ -40,7 +47,13 @@ function Navbar() {
                          dropdownItem5={'Volvo'} dropdownItem5Icon={volvo}
                          dropdownItem6={'Mercedes'} dropdownItem6Icon={mercedes}
                 />
-                <NavLink dropdown={true} name={'Types'} dropdownItem1={'SUV'} dropdownItem2={'Sedan'} dropdownItem3={'Hatchback'} dropdownItem4={'Coupe'} dropdownItem5={'Hybrid'} />
+                <NavLink dropdown={true} name={'Types'}
+                         dropdownItem1={'SUV'} dropdownItem1Icon={suv}
+                         dropdownItem2={'Sedan'} dropdownItem2Icon={sedan}
+                         dropdownItem3={'Hatchback'} dropdownItem3Icon={hatchback}
+                         dropdownItem4={'Coupe'} dropdownItem4Icon={coupe}
+                         dropdownItem5={'Hybrid'} dropdownItem5Icon={hybrid}
+                />
                 <NavLink dropdown={false} to={'/cars'} name={'All Cars'} />
                 <NavLink dropdown={false} to={'/about'} name={'About'} />
                 <NavLink dropdown={false} to={'/contact'} name={'Contact'} />
