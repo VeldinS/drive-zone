@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import NavLink from "@/components/navbar/NavLink";
 
-import logo from '@/assets/logo/logo.png';
+import logo from '@/assets/logo/Logo.png';
 import user_w from '@/assets/icons/user-w.svg';
 import user_b from '@/assets/icons/user-b.svg';
 
