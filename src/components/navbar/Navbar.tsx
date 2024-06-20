@@ -5,7 +5,8 @@ import Image from "next/image";
 import NavLink from "@/components/navbar/NavLink";
 
 import logo from '@/assets/logo/logo.png';
-import user from '@/assets/icons/user.svg';
+import user_w from '@/assets/icons/user-w.svg';
+import user_b from '@/assets/icons/user-b.svg';
 
 import volkswagen from '@/assets/brands/volkswagen.svg';
 import audi from '@/assets/brands/audi.svg';
@@ -33,7 +34,7 @@ interface navbarProps{
 
 function Navbar(navProps: navbarProps) {
     return (
-        <nav className={`bg-[${navProps.bgColor}] fixed z-[999] top-0 w-full h-auto py-4 px-[5%] flex flex-row justify-between items-center bg-transparent`}>
+        <nav className={`bg-[${navProps.bgColor}] fixed z-[999] top-0 w-full h-auto py-4 px-[3%] lg:px-[5%] flex flex-row justify-between items-center bg-transparent`}>
             <div className={'flex flex-row justify-start items-center gap-6'}>
                 <Image src={logo} alt="Logo image." width="150" />
                 <NavLink dropdown={true} name={'Home'}
@@ -63,13 +64,14 @@ function Navbar(navProps: navbarProps) {
                 <NavLink dropdown={false} to={'/contact'} name={'Contact'} />
             </div>
             <div className={'flex flex-row justify-center items-center gap-6'}>
-                <Link href={'sign-in'} className={'flex flex-row justify-start items-center px-8 py-2 gap-2 rounded-2xl border border-transparent hover:border-white transition duration-300'}>
-                    <Image src={user} alt={'User signup icon.'} width={20} />
-                    <p className={'font-poppins font-medium text-base text-white'}>
+                <Link href={'sign-in'} className={'flex flex-row justify-start items-center px-4 sm:px-8 py-2 gap-2 rounded-2xl border border-black lg:border-transparent hover:border-white transition duration-300'}>
+                    <Image src={user_w} alt={'User signup icon.'} width={20} className={'hidden lg:flex'}/>
+                    <Image src={user_b} alt={'User signup icon.'} width={20} className={'flex lg:hidden'}/>
+                    <p className={'font-poppins font-medium text-base text-black lg:text-white'}>
                         Sign in
                     </p>
                 </Link>
-                <Link href={'sell'} className={'px-8 py-2 bg-transparent text-white font-poppins font-medium text-base border border-white rounded-2xl hover:bg-white hover:text-black transition duration-300'}>
+                <Link href={'sell'} className={'hidden lg:flex px-8 py-2 bg-transparent text-white font-poppins font-medium text-base border border-white rounded-2xl hover:bg-white hover:text-black transition duration-300'}>
                     Sell Car
                 </Link>
             </div>

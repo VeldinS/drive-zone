@@ -25,7 +25,7 @@ interface navLinkProps {
 
 function NavLink(navlinkProps: navLinkProps) {
     return (
-        <div className="relative group">
+        <div className="hidden lg:flex relative group">
             {!navlinkProps.dropdown && (
                 <Link
                     href={`${navlinkProps.to}`}
