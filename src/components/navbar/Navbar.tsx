@@ -53,7 +53,7 @@ function Navbar(navProps: navbarProps) {
     }, []);
 
     return (
-        <nav className={`${isScrolled ? 'bg-black bg-opacity-10 backdrop-blur-md' : `bg-[${navProps.bgColor}]`} fixed z-[999] top-0 w-full h-auto py-4 px-[3%] lg:px-[5%] flex flex-row justify-between items-center transition-all duration-500`}>
+        <nav className={`${isScrolled ? 'bg-white lg:bg-black bg-opacity-100 lg:bg-opacity-10 backdrop-blur-md' : `bg-[${navProps.bgColor}]`} fixed z-[999] top-0 w-full h-auto py-4 px-[3%] lg:px-[5%] flex flex-row justify-between items-center transition-all duration-500`}>
             <div className={'flex flex-row justify-start items-center gap-6'}>
                 <Image src={logo} alt="Logo image." width="150"/>
                 <NavLink dropdown={true} name={'Home'}
