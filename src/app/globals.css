@@ -35,6 +35,5 @@ body {
 @media screen and (max-width: 1000px) {
   .landing-image{
     clip-path: polygon(50% 0, 100% 0, 100% 100%, 100% 100%);
-    border-bottom-left-radius: 32px;
   }
 }
