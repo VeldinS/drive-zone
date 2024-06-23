@@ -1,4 +1,5 @@
-import React from 'react';
+'use client'
+import { useEffect, useState } from 'react';
 
 import Image from "next/image";
 
@@ -33,10 +34,28 @@ interface navbarProps{
 }
 
 function Navbar(navProps: navbarProps) {
+
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
-        <nav className={`bg-[${navProps.bgColor}] fixed z-[999] top-0 w-full h-auto py-4 px-[3%] lg:px-[5%] flex flex-row justify-between items-center bg-transparent`}>
+        <nav className={`${isScrolled ? 'bg-black bg-opacity-10 backdrop-blur-md' : `bg-[${navProps.bgColor}]`} fixed z-[999] top-0 w-full h-auto py-4 px-[3%] lg:px-[5%] flex flex-row justify-between items-center transition-all duration-500`}>
             <div className={'flex flex-row justify-start items-center gap-6'}>
-                <Image src={logo} alt="Logo image." width="150" />
+                <Image src={logo} alt="Logo image." width="150"/>
                 <NavLink dropdown={true} name={'Home'}
                          dropdownItem1={'About Us'} dropdownItem1Icon={about}
                          dropdownItem2={'Sell Car'} dropdownItem2Icon={sell}
@@ -59,19 +78,21 @@ function Navbar(navProps: navbarProps) {
                          dropdownItem4={'Coupe'} dropdownItem4Icon={coupe}
                          dropdownItem5={'Hybrid'} dropdownItem5Icon={hybrid}
                 />
-                <NavLink dropdown={false} to={'/cars'} name={'All Cars'} />
-                <NavLink dropdown={false} to={'/about'} name={'About'} />
-                <NavLink dropdown={false} to={'/contact'} name={'Contact'} />
+                <NavLink dropdown={false} to={'/cars'} name={'All Cars'}/>
+                <NavLink dropdown={false} to={'/about'} name={'About'}/>
+                <NavLink dropdown={false} to={'/contact'} name={'Contact'}/>
             </div>
             <div className={'flex flex-row justify-center items-center gap-6'}>
-                <Link href={'sign-in'} className={'flex flex-row justify-start items-center px-4 sm:px-8 py-2 gap-2 rounded-2xl border border-black lg:border-transparent hover:border-white transition duration-300'}>
+                <Link href={'sign-in'}
+                      className={'flex flex-row justify-start items-center px-4 sm:px-8 py-2 gap-2 rounded-2xl border border-black lg:border-transparent hover:border-white transition duration-300'}>
                     <Image src={user_w} alt={'User signup icon.'} width={20} className={'hidden lg:flex'}/>
                     <Image src={user_b} alt={'User signup icon.'} width={20} className={'flex lg:hidden'}/>
                     <p className={'font-poppins font-medium text-base text-black lg:text-white'}>
                         Sign in
                     </p>
                 </Link>
-                <Link href={'sell'} className={'hidden lg:flex px-8 py-2 bg-transparent text-white font-poppins font-medium text-base border border-white rounded-2xl hover:bg-white hover:text-black transition duration-300'}>
+                <Link href={'sell'}
+                      className={'hidden lg:flex px-8 py-2 bg-transparent text-white font-poppins font-medium text-base border border-white rounded-2xl hover:bg-white hover:text-black transition duration-300'}>
                     Sell Car
                 </Link>
             </div>
