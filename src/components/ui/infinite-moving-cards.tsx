@@ -4,6 +4,7 @@ import { cn } from "@/utils/cn";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import {StaticImport} from "next/dist/shared/lib/get-img-props";
+import Link from "next/link";
 
 export const InfiniteMovingCards = ({
                                         items,
@@ -87,8 +88,8 @@ export const InfiniteMovingCards = ({
                 )}
             >
                 {items.map((item, idx) => (
-                    <li
-                        className="w-[250px] max-w-full flex-shrink-0 bg-white rounded-[12px] border border-black/[.20] p-8"
+                    <Link href={item.title}
+                        className="w-[250px] max-w-full flex-shrink-0 bg-white rounded-[12px] border border-black/[.20] hover:border-black hover:shadow-xl transition-all duration-300 p-8"
                         key={item.title}
                     >
                         <div className="flex flex-col items-center gap-8">
@@ -97,7 +98,7 @@ export const InfiniteMovingCards = ({
             {item.title}
           </span>
                         </div>
-                    </li>
+                    </Link>
                 ))}
             </ul>
         </div>

@@ -14,6 +14,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors:{
+        "primaryBlue": '#050B20',
+      },
       fontFamily: {
         poppins: ['var(--font-poppins)'],
       },
