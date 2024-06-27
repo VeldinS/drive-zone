@@ -11,7 +11,7 @@ interface ModelButtonProps {
 
 function ModelButton(modelProps: ModelButtonProps) {
     return (
-        <Link href={modelProps.modelLink} className="flex flex-row justify-center items-center py-3 px-3 sm:px-6 gap-2 bg-white rounded-[32px] border border-[#E9E9E9] hover:border-black hover:shadow-xl hover:scale-105 transition-all duration-500 ">
+        <Link href={modelProps.modelLink} className="relative z-20 flex flex-row justify-center items-center py-3 px-3 sm:px-6 gap-2 bg-white rounded-[32px] border border-[#E9E9E9] hover:border-black hover:shadow-xl hover:scale-105 transition-all duration-500 ">
             {modelProps.modelIcon && (
                 <Image src={modelProps.modelIcon} alt="Model icon." width={30} />
             )}

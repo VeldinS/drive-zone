@@ -17,7 +17,7 @@ function ModelCard(cardProps: ModelCardProps) {
             <Image className={'z-0'} src={cardProps.image} alt={'Car image - placeholder image for car type.'} layout="fill"
                    objectFit="cover"/>
             <div
-                className={'absolute z-10 top-0 left-0 right-0 bottom-0 bg-transparent group-hover:bg-black/30 transition-all duration-500'}></div>
+                className={'absolute z-10 top-0 left-0 right-0 bottom-0 bg-black/40 group-hover:bg-transparent transition-all duration-500'}></div>
             <ModelButton modelIcon={cardProps.icon} modelName={cardProps.type} modelLink={cardProps.typeLink}/>
         </div>
     );
