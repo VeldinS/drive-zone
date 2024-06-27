@@ -3,27 +3,39 @@ import LinkButtonBlack from "@/components/buttons/LinkButtonBlack";
 
 import Image from "next/image";
 
-import suvImage from '@/assets/content images/car-landing-full.webp';
 import ModelButton from "@/components/buttons/ModelButton";
+
+import suvImage from '@/assets/car types/suv.jpg';
+import sedanImage from '@/assets/car types/sedan.jpg';
+import hatchbackImage from '@/assets/car types/hatchback.jpg';
+import hybridImage from '@/assets/car types/hybrid.jpg';
+import coupeImage from '@/assets/car types/coupe.jpg';
+
+import suv from '@/assets/car types/suv.svg';
+import sedan from '@/assets/car types/sedan.svg';
+import hatchback from '@/assets/car types/hatchbag.svg';
+import hybrid from '@/assets/car types/hybrid.svg';
+import coupe from '@/assets/car types/coupe.svg';
+import ModelCard from "@/components/cards/ModelCard";
 
 
 function TypesSection() {
     return (
-        <section className={'w-screen h-auto px-[5%] py-16 flex flex-col justify-start items-start gap-12'}>
+        <section className={'w-screen h-auto px-[5%] py-16 flex flex-col justify-start items-start gap-6'}>
             <div className={'w-full h-auto flex flex-row justify-between items-center mb-8'}>
                 <h1 className={'text-primaryBlue font-poppins font-semibold text-3xl tracking-wider'}>Browse by
                     Type</h1>
                 <LinkButtonBlack text={'View All'} link={'/cars'}/>
             </div>
 
-            <div className={'w-full h-[30vh] grid grid-cols-3 gap-12'}>
-                <div className={'relative w-full h-full p-8 flex flex-col items-start justify-end rounded-xl overflow-hidden'}>
-                    <Image src={suvImage} alt={'Car image - placeholder image for car type.'} layout="fill" objectFit="cover"/>
-                </div>
-
+            <div className={'w-full h-[30vh] grid grid-cols-2 gap-6'}>
+                <ModelCard image={suvImage} type={'SUV'} typeLink={'/suv'} icon={suv} />
+                <ModelCard image={sedanImage} type={'Sedan'} typeLink={'/sedan'} icon={sedan} />
             </div>
-            <div className={'w-full h-auto grid grid-cols-3 gap-12'}>
-
+            <div className={'w-full h-[30vh] grid grid-cols-3 gap-6'}>
+                <ModelCard image={hatchbackImage} type={'Hatchback'} typeLink={'/hatchback'} icon={hatchback} />
+                <ModelCard image={hybridImage} type={'Hybrid'} typeLink={'/hybrid'} icon={hybrid} />
+                <ModelCard image={coupeImage} type={'Coupe'} typeLink={'/coupe'} icon={coupe} />
             </div>
         </section>
     );
