@@ -27,6 +27,7 @@ import sedan from '@/assets/car types/sedan.svg';
 import hatchback from '@/assets/car types/hatchbag.svg';
 import hybrid from '@/assets/car types/hybrid.svg';
 import coupe from '@/assets/car types/coupe.svg';
+
 import Link from "next/link";
 
 interface navbarProps{

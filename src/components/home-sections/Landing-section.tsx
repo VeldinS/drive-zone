@@ -12,7 +12,7 @@ import hybrid from '@/assets/car types/hybrid.svg';
 import coupe from '@/assets/car types/coupe.svg';
 
 import car from '@/assets/content images/car-landing.webp';
-import carLanding from '@/assets/content images/car-landing-mobile.webp';
+import carLanding from '@/assets/content images/car-landing-full.webp';
 
 function LandingSection() {
     return (
