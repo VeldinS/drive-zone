@@ -7,6 +7,9 @@ function Footer() {
 
             </div>
             <div className={'w-full h-[1px] bg-white/10'}></div>
+            <div className={'flex flex-col items-center justify-center'}>
+
+            </div>
         </footer>
     );
 }
