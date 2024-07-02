@@ -3,6 +3,7 @@ import LandingSection from "@/components/home-sections/Landing-section";
 import BrandsSection from "@/components/home-sections/Brands-section";
 import BuySellSection from "@/components/home-sections/BuySell-section";
 import TypesSection from "@/components/home-sections/Types-section";
+import Footer from "@/components/footer/Footer";
 
 export default function Home() {
     return (
@@ -12,6 +13,7 @@ export default function Home() {
             <BrandsSection />
             <BuySellSection />
             <TypesSection />
+            <Footer />
         </div>
     );
 }
