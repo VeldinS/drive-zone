@@ -9,7 +9,10 @@ function Footer() {
                     <p className={'font-poppins text-white text-base'}>Receive pricing updates, shopping tips & more!</p>
                 </div>
                 <form>
-                    <input className={'px-2 py-4 bg-white/10 rounded-[32px] w-[400px]'}/>
+                    <div className={'p-2 pl-4 bg-white/10 rounded-[32px] w-[400px] flex flex-row justify-between items-center'}>
+                        <input placeholder={'Your email address'} className={'bg-transparent w-2/3'}/>
+                        <button type={'submit'} className={'px-6 py-2 text-base rounded-[32px] bg-[#405FF2]'}>Sign up</button>
+                    </div>
                 </form>
             </div>
             <div className={'w-full h-[1px] bg-white/10'}></div>
