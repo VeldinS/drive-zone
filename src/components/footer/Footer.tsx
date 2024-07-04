@@ -1,5 +1,15 @@
 import React from 'react';
 import FooterLink from "@/components/footer/FooterLink";
+import Link from "next/link";
+
+import appleIcon from '@/assets/footer/apple.svg';
+import googlePlayIcon from '@/assets/footer/googlePlay.svg';
+import facebookIcon from '@/assets/footer/facebook.svg';
+import twitterIcon from '@/assets/footer/twitter.svg';
+import instagramIcon from '@/assets/footer/instagram.svg';
+import linkedInIcon from '@/assets/footer/linkedin.svg';
+import Image from "next/image";
+
 
 function Footer() {
     return (
@@ -63,12 +73,36 @@ function Footer() {
                 </div>
                 <div className={'flex flex-col justify-start items-start gap-4'}>
                     <p className={'font-poppins text-lg text-white font-medium'}>Company</p>
-                    <div className={'flex flex-col justify-start items-start gap-3'}>
-
+                    <div className={'flex flex-col justify-start items-stretch gap-3'}>
+                        <Link href={'https://www.apple.com/store'} className={'px-4 pr-8 py-3 bg-white/10 flex flex-row justify-start items-center gap-3 rounded-2xl'}>
+                            <Image src={appleIcon} alt={'Apple Logo'} width={25}/>
+                            <div className={'flex flex-col justify-start items-start'}>
+                                <p className={'text-[12px] text-white font-poppins font-normal'}>Download on the</p>
+                                <p className={'text-base text-white font-poppins font-medium'}>Apple Store</p>
+                            </div>
+                        </Link>
+                        <Link href={'https://play.google.com/store/apps?hl=en_US'} className={'px-4 py-3 bg-white/10 flex flex-row justify-start items-center gap-3 rounded-2xl'}>
+                            <Image src={googlePlayIcon} alt={'Google Play Logo'} width={25}/>
+                            <div className={'flex flex-col justify-start items-start'}>
+                                <p className={'text-[12px] text-white font-poppins font-normal'}>Get it on</p>
+                                <p className={'text-base text-white font-poppins font-medium'}>Google Play</p>
+                            </div>
+                        </Link>
                     </div>
                     <p className={'font-poppins text-lg text-white font-medium'}>Connect With Us</p>
                     <div className={'w-full flex flex-row justify-between items-center'}>
-
+                        <div className={'w-[20px] h-[20px] relative'}>
+                            <Image src={facebookIcon} alt={'Facebook icon'} fill/>
+                        </div>
+                        <div className={'w-[20px] h-[20px] relative'}>
+                            <Image src={twitterIcon} alt={'Twitter icon'} fill/>
+                        </div>
+                        <div className={'w-[20px] h-[20px] relative'}>
+                            <Image src={instagramIcon} alt={'Instagram icon'} fill/>
+                        </div>
+                        <div className={'w-[20px] h-[20px] relative'}>
+                            <Image src={linkedInIcon} alt={'LinkedIn icon'} fill/>
+                        </div>
                     </div>
                 </div>
             </div>
