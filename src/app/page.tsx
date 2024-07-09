@@ -4,6 +4,7 @@ import BrandsSection from "@/components/home-sections/Brands-section";
 import BuySellSection from "@/components/home-sections/BuySell-section";
 import TypesSection from "@/components/home-sections/Types-section";
 import Footer from "@/components/footer/Footer";
+import PopularSection from "@/components/home-sections/Popular-section";
 
 export default function Home() {
     return (
@@ -12,6 +13,7 @@ export default function Home() {
             <LandingSection />
             <BrandsSection />
             <BuySellSection />
+            <PopularSection />
             <TypesSection />
             <Footer />
         </div>
