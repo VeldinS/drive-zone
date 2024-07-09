@@ -16,7 +16,6 @@ const PopularSection = () => {
             if (error) {
                 console.error('Error fetching cars:', error.message);
             } else {
-                // Handle the case where data is null
                 if (cars === null) {
                     setCars([]);
                 } else {
