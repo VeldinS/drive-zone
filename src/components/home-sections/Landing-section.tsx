@@ -48,7 +48,7 @@ function LandingSection() {
             </div>
             <div className="flex lg:hidden absolute z-1 bottom-0 w-full h-1/2">
                 <div className="relative w-full h-full">
-                    <Image src={carLanding} alt="Car image" layout="fill" objectFit="cover"/>
+                    <Image src={carLanding} alt="Car image" fill objectFit="cover"/>
                     <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white to-transparent"></div>
                 </div>
             </div>

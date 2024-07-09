@@ -1,46 +1,45 @@
-import {GetServerSideProps} from "next";
+'use client'
 import supabase  from "@/lib/supabase";
+import { useEffect, useState } from 'react';
 import {Car} from "@/types";
 
-interface CarsPageProps {
-    cars: Car[];
-    error?: string;
-}
+const PopularSection = () => {
 
-export const getServerSideProps: GetServerSideProps = async () => {
-    const { data: cars, error } = await supabase
-        // @ts-ignore
-        .from<Car>('cars')
-        .select('*, brand:brands(*), type:types(*), seller:users(*)');
+    const [cars, setCars] = useState<Car[]>([]); // Specify the type as Car[]
 
-    if (error) {
-        return { props: { error: error.message } };
-    }
+    useEffect(() => {
+        async function fetchCars() {
+            let { data: cars, error } = await supabase
+                .from('cars')
+                .select('*');
 
-    return {
-        props: { cars },
-    };
-};
+            if (error) {
+                console.error('Error fetching cars:', error.message);
+            } else {
+                // Handle the case where data is null
+                if (cars === null) {
+                    setCars([]);
+                } else {
+                    setCars(cars);
+                }
+            }
+        }
 
-const PopularSection = ({ cars, error }: CarsPageProps) => {
-    if (error) {
-        return <h1 className={'text-black'}>Error: {error}</h1>;
-    }
+        fetchCars();
+    }, []);
 
-    if (!cars || cars.length === 0) {
-        return <h1 className={'text-black'}>No cars available</h1>;
-    }
+
     return (
         <section className={'w-screen h-screen grid grid-cols-4'}>
-            {cars.map((car) => (
-                <div key={car.id}>
-                    <h2>{car.name}</h2>
-                    <p>Brand: {car.brand?.name}</p>
-                    <p>Type: {car.type?.name}</p>
-                    <p>Seller: {car.seller?.name}</p>
-                    <p>Price: {car.price}</p>
-                </div>
-            ))}
+            <div>
+                {cars.map((car:any) => (
+                    <div key={car.id}>
+                        <h2 className={'text-black'}>{car.name}</h2>
+                        <p> className={'text-black'}Price: {car.price}</p>
+                        <hr />
+                    </div>
+                ))}
+            </div>
         </section>
     );
 }
