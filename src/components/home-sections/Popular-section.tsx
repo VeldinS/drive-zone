@@ -36,7 +36,7 @@ const PopularSection = () => {
                     <div key={car.id}>
                         <h2 className={'text-black'}>{car.name}</h2>
                         <p> className={'text-black'}Price: {car.price}</p>
-                        <Image src={car.image_url} alt={'Car image'} width={200} />
+                        <Image src={car.main_image_url} alt={'Car image'} width={200} height={200} />
                         <hr />
                     </div>
                 ))}
