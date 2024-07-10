@@ -16,7 +16,7 @@ export async function addCar(car: Partial<Car>): Promise<number | null> {
 }
 
 export async function addCarImage(carId: number, imageUrl: string): Promise<void> {
-    const { data, error } = await supabase
+    const { error } = await supabase
         .from('car-images')
         .insert([{ car_id: carId, image_url: imageUrl }]);
 
