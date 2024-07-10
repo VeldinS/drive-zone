@@ -1,13 +1,21 @@
 export interface Car {
     id: number;
     name: string;
+    details: string;
+    price: number;
+    main_image_url: string;
     brand_id: number;
     type_id: number;
-    price: number;
     seller_id: number;
     brand?: Brand;
     type?: Type;
     seller?: User;
+}
+
+export interface CarImage {
+    id: number;
+    car_id: number;
+    image_url: string;
 }
 
 export interface User {
