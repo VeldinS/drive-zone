@@ -1,5 +1,5 @@
-'use client'
-import { useState } from 'react';
+'use client';
+import React, { useState } from 'react';
 import { addCar, addCarImage } from '@/services/carsService';
 import { uploadImage } from '@/services/storageService';
 
@@ -9,7 +9,11 @@ const CarUploadForm = () => {
     const [price, setPrice] = useState<string>('');
     const [mainImage, setMainImage] = useState<File | null>(null);
     const [otherImages, setOtherImages] = useState<File[]>([]);
-    const brandName = 'touran'; // Replace with dynamic value if available
+    const [brandName, setBrandName] = useState<string>('volkswagen');
+    const [type, setType] = useState<string>('SUV');
+
+    const brands = ['volkswagen', 'audi', 'mercedes', 'volvo', 'bmw', 'toyota'];
+    const types = ['SUV', 'Sedan', 'Hybrid', 'Coupe', 'Hatchback'];
 
     const handleMainImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files[0]) {
@@ -39,26 +43,35 @@ const CarUploadForm = () => {
         }
 
         // Upload the main image
-        const mainImageUrl = await uploadImage(mainImage, brandName);
+        const mainImageUrl = await uploadImage(mainImage,name, brandName);
         if (!mainImageUrl) {
             alert('Failed to upload main image.');
             return;
         }
+
+        // Construct the full URL for the main image
+        const fullMainImageUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/car-images/${mainImageUrl}`;
 
         // Add car details to the database
         const carId = await addCar({
             name,
             details,
             price: parseFloat(price),
-            main_image_url: mainImageUrl,
+            main_image_url: fullMainImageUrl,
+            brand_id: brandName,
+            type_id: type,
         });
 
         if (carId) {
             // Upload other images
             for (const file of otherImages) {
-                const imageUrl = await uploadImage(file, carId);
+                const imageUrl = await uploadImage(file,name, brandName);
                 if (imageUrl) {
-                    await addCarImage(carId, imageUrl);
+                    const fullImageUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/car-images/${imageUrl}`;
+                    console.log('Other image URL:', fullImageUrl);
+                    await addCarImage(carId, fullImageUrl);
+                } else {
+                    console.error('Failed to upload other image:', file.name);
                 }
             }
 
@@ -66,7 +79,6 @@ const CarUploadForm = () => {
             // Optionally, reset the form here
         }
     };
-
 
     return (
         <form onSubmit={handleSubmit}>
@@ -103,6 +115,40 @@ const CarUploadForm = () => {
                         onChange={(e) => setPrice(e.target.value)}
                         required
                     />
+                </label>
+            </div>
+            <div>
+                <label>
+                    Brand:
+                    <select
+                        className={'text-black'}
+                        value={brandName}
+                        onChange={(e) => setBrandName(e.target.value)}
+                        required
+                    >
+                        {brands.map((brand) => (
+                            <option key={brand} value={brand}>
+                                {brand.charAt(0).toUpperCase() + brand.slice(1)}
+                            </option>
+                        ))}
+                    </select>
+                </label>
+            </div>
+            <div>
+                <label>
+                    Type:
+                    <select
+                        className={'text-black'}
+                        value={type}
+                        onChange={(e) => setType(e.target.value)}
+                        required
+                    >
+                        {types.map((type) => (
+                            <option key={type} value={type}>
+                                {type}
+                            </option>
+                        ))}
+                    </select>
                 </label>
             </div>
             <div>

@@ -2,6 +2,7 @@
 import supabase  from "@/lib/supabase";
 import { useEffect, useState } from 'react';
 import {Car} from "@/types";
+import Image from "next/image";
 
 const PopularSection = () => {
 
@@ -24,6 +25,7 @@ const PopularSection = () => {
             }
         }
         fetchCars();
+        console.log(cars);
     }, []);
 
 
@@ -34,6 +36,7 @@ const PopularSection = () => {
                     <div key={car.id}>
                         <h2 className={'text-black'}>{car.name}</h2>
                         <p> className={'text-black'}Price: {car.price}</p>
+                        <Image src={car.image_url} alt={'Car image'} width={200} />
                         <hr />
                     </div>
                 ))}
