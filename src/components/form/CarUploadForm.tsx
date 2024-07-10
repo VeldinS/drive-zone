@@ -43,7 +43,7 @@ const CarUploadForm = () => {
         }
 
         // Upload the main image
-        const mainImageUrl = await uploadImage(mainImage,name, brandName);
+        const mainImageUrl = await uploadImage(mainImage,name,'main-image', brandName);
         if (!mainImageUrl) {
             alert('Failed to upload main image.');
             return;
@@ -65,7 +65,7 @@ const CarUploadForm = () => {
         if (carId) {
             // Upload other images
             for (const file of otherImages) {
-                const imageUrl = await uploadImage(file,name, brandName);
+                const imageUrl = await uploadImage(file,name,'other-images', brandName);
                 if (imageUrl) {
                     const fullImageUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/car-images/${imageUrl}`;
                     console.log('Other image URL:', fullImageUrl);
