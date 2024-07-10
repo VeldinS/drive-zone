@@ -23,7 +23,6 @@ const PopularSection = () => {
                 }
             }
         }
-
         fetchCars();
     }, []);
 
