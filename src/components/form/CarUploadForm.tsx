@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { addCar, addCarFeature, addCarImage } from '@/services/carsService';
 import { uploadImage } from '@/services/storageService';
+import FormInput from "@/components/form/FormInput";
+import FormSelect from "@/components/form/FormSelect";
 
 const CarUploadForm = () => {
     const [step, setStep] = useState(1);
@@ -143,156 +145,44 @@ const CarUploadForm = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
             {step === 1 && (
                 <div className="space-y-4">
-                    <div>
-                        <label>
-                            Car Name:
-                            <input
-                                className="border border-gray-300 rounded p-2 w-full text-black"
-                                type="text"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                                required
-                            />
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Brand:
-                            <select
-                                className="border border-gray-300 rounded p-2 w-full text-black"
-                                value={brand}
-                                onChange={(e) => setBrand(e.target.value)}
-                                required
-                            >
-                                {brands.map((brand) => (
-                                    <option key={brand} value={brand}>
-                                        {brand.charAt(0).toUpperCase() + brand.slice(1)}
-                                    </option>
-                                ))}
-                            </select>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Type:
-                            <select
-                                className="border border-gray-300 rounded p-2 w-full text-black"
-                                value={type}
-                                onChange={(e) => setType(e.target.value)}
-                                required
-                            >
-                                {types.map((type) => (
-                                    <option key={type} value={type}>
-                                        {type}
-                                    </option>
-                                ))}
-                            </select>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Manufacture Year:
-                            <input
-                                className="border border-gray-300 rounded p-2 w-full text-black"
-                                type="text"
-                                value={manufactureYear}
-                                onChange={(e) => setManufactureYear(e.target.value)}
-                                required
-                            />
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Mileage:
-                            <input
-                                className="border border-gray-300 rounded p-2 w-full text-black"
-                                type="text"
-                                value={mileage}
-                                onChange={(e) => setMileage(e.target.value)}
-                                required
-                            />
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Transmission:
-                            <select
-                                className="border border-gray-300 rounded p-2 w-full text-black"
-                                value={transmission}
-                                onChange={(e) => setTransmission(e.target.value)}
-                                required
-                            >
-                                {transmissions.map((transmission) => (
-                                    <option key={transmission} value={transmission}>
-                                        {transmission}
-                                    </option>
-                                ))}
-                            </select>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Fuel Type:
-                            <select
-                                className="border border-gray-300 rounded p-2 w-full text-black"
-                                value={fuel}
-                                onChange={(e) => setFuel(e.target.value)}
-                                required
-                            >
-                                {fuels.map((fuel) => (
-                                    <option key={fuel} value={fuel}>
-                                        {fuel.charAt(0).toUpperCase() + fuel.slice(1)}
-                                    </option>
-                                ))}
-                            </select>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Price:
-                            <input
-                                className="border border-gray-300 rounded p-2 w-full text-black"
-                                type="text"
-                                value={price}
-                                onChange={(e) => setPrice(e.target.value)}
-                                required
-                            />
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Drive Type:
-                            <select
-                                className="border border-gray-300 rounded p-2 w-full text-black"
-                                value={driveType}
-                                onChange={(e) => setDriveType(e.target.value)}
-                                required
-                            >
-                                {driveTypes.map((driveType) => (
-                                    <option key={driveType} value={driveType}>
-                                        {driveType}
-                                    </option>
-                                ))}
-                            </select>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Condition:
-                            <select
-                                className="border border-gray-300 rounded p-2 w-full text-black"
-                                value={condition}
-                                onChange={(e) => setCondition(e.target.value)}
-                                required
-                            >
-                                {conditions.map((condition) => (
-                                    <option key={condition} value={condition}>
-                                        {condition.charAt(0).toUpperCase() + condition.slice(1)}
-                                    </option>
-                                ))}
-                            </select>
-                        </label>
-                    </div>
+                    <FormInput labelName={'Car Name:'} type={'text'} value={name}
+                               onChange={(e:React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+                    />
+
+                    <FormSelect labelName={'Brand:'} value={brand} onChange={(e:React.ChangeEvent<HTMLSelectElement>) => setBrand(e.target.value)}
+                                selectType={brands}
+                    />
+
+                    <FormSelect labelName={'Type:'} value={type} onChange={(e:React.ChangeEvent<HTMLSelectElement>) => setType(e.target.value)}
+                                selectType={types}
+                    />
+
+                    <FormInput labelName={'Manufacture Year:'} type={'text'} value={manufactureYear}
+                               onChange={(e:React.ChangeEvent<HTMLInputElement>) => setManufactureYear(e.target.value)}
+                    />
+
+                    <FormInput labelName={'Mileage:'} type={'text'} value={mileage}
+                               onChange={(e:React.ChangeEvent<HTMLInputElement>) => setMileage(e.target.value)}
+                    />
+
+                    <FormSelect labelName={'Transmission:'} value={transmission} onChange={(e:React.ChangeEvent<HTMLSelectElement>) => setTransmission(e.target.value)}
+                                selectType={transmissions}
+                    />
+
+                    <FormSelect labelName={'Fuel Type:'} value={fuel} onChange={(e:React.ChangeEvent<HTMLSelectElement>) => setFuel(e.target.value)}
+                                selectType={fuels}
+                    />
+
+                    <FormInput labelName={'Price:'} type={'text'} value={price} onChange={(e:React.ChangeEvent<HTMLInputElement>) => setPrice(e.target.value)} />
+
+                    <FormSelect labelName={'Drive Type:'} value={driveType} onChange={(e:React.ChangeEvent<HTMLSelectElement>) => setDriveType(e.target.value)}
+                                selectType={driveTypes}
+                    />
+
+                    <FormSelect labelName={'Condition:'} value={condition} onChange={(e:React.ChangeEvent<HTMLSelectElement>) => setCondition(e.target.value)}
+                                selectType={conditions}
+                    />
+
                     <div className="flex justify-between mt-4">
                         <button
                             type="button"
@@ -313,143 +203,51 @@ const CarUploadForm = () => {
             )}
             {step === 2 && (
                 <div className="space-y-4">
-                    <div>
-                        <label>
-                            Engine Size (L):
-                            <input
-                                className="border border-gray-300 rounded p-2 w-full text-black"
-                                type="text"
-                                value={engineSize}
-                                onChange={(e) => setEngineSize(e.target.value)}
-                                required
-                            />
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Doors:
-                            <select
-                                className="border border-gray-300 rounded p-2 w-full text-black"
-                                value={doors}
-                                onChange={(e) => setDoors(e.target.value)}
-                                required
-                            >
-                                {doorOptions.map((door) => (
-                                    <option key={door} value={door}>
-                                        {door}
-                                    </option>
-                                ))}
-                            </select>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Cylinders:
-                            <input
-                                className="border border-gray-300 rounded p-2 w-full text-black"
-                                type="text"
-                                value={cylinders}
-                                onChange={(e) => setCylinders(e.target.value)}
-                                required
-                            />
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Color:
-                            <input
-                                className="border border-gray-300 rounded p-2 w-full text-black"
-                                type="text"
-                                value={color}
-                                onChange={(e) => setColor(e.target.value)}
-                                required
-                            />
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            VIN:
-                            <input
-                                className="border border-gray-300 rounded p-2 w-full text-black"
-                                type="text"
-                                value={vin}
-                                onChange={(e) => setVin(e.target.value)}
-                                required
-                            />
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Length (mm):
-                            <input
-                                className="border border-gray-300 rounded p-2 w-full text-black"
-                                type="text"
-                                value={length}
-                                onChange={(e) => setLength(e.target.value)}
-                                required
-                            />
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Width (mm):
-                            <input
-                                className="border border-gray-300 rounded p-2 w-full text-black"
-                                type="text"
-                                value={width}
-                                onChange={(e) => setWidth(e.target.value)}
-                                required
-                            />
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Height (mm):
-                            <input
-                                className="border border-gray-300 rounded p-2 w-full text-black"
-                                type="text"
-                                value={height}
-                                onChange={(e) => setHeight(e.target.value)}
-                                required
-                            />
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Weight (kg):
-                            <input
-                                className="border border-gray-300 rounded p-2 w-full text-black"
-                                type="text"
-                                value={weight}
-                                onChange={(e) => setWeight(e.target.value)}
-                                required
-                            />
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Seats:
-                            <input
-                                className="border border-gray-300 rounded p-2 w-full text-black"
-                                type="text"
-                                value={seats}
-                                onChange={(e) => setSeats(e.target.value)}
-                                required
-                            />
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Fuel Tank Size (L):
-                            <input
-                                className="border border-gray-300 rounded p-2 w-full text-black"
-                                type="text"
-                                value={fuelTankSize}
-                                onChange={(e) => setFuelTankSize(e.target.value)}
-                                required
-                            />
-                        </label>
-                    </div>
+
+                    <FormInput labelName={'Engine Size (L):'} type={'text'} value={engineSize}
+                               onChange={(e:React.ChangeEvent<HTMLInputElement>) => setEngineSize(e.target.value)}
+                    />
+
+                    <FormSelect labelName={'Doors:'} value={doors} onChange={(e:React.ChangeEvent<HTMLSelectElement>) => setDoors(e.target.value)}
+                                selectType={doorOptions}
+                    />
+
+                    <FormInput labelName={'Cylinders:'} type={'text'} value={cylinders}
+                               onChange={(e:React.ChangeEvent<HTMLInputElement>) => setCylinders(e.target.value)}
+                    />
+
+                    <FormInput labelName={'Color:'} type={'text'} value={color}
+                               onChange={(e:React.ChangeEvent<HTMLInputElement>) => setColor(e.target.value)}
+                    />
+
+                    <FormInput labelName={'VIN:'} type={'text'} value={vin}
+                               onChange={(e:React.ChangeEvent<HTMLInputElement>) => setVin(e.target.value)}
+                    />
+
+                    <FormInput labelName={'Length (mm):'} type={'text'} value={length}
+                               onChange={(e:React.ChangeEvent<HTMLInputElement>) => setLength(e.target.value)}
+                    />
+
+                    <FormInput labelName={'Width (mm):'} type={'text'} value={width}
+                               onChange={(e:React.ChangeEvent<HTMLInputElement>) => setWidth(e.target.value)}
+                    />
+
+                    <FormInput labelName={'Height (mm):'} type={'text'} value={height}
+                               onChange={(e:React.ChangeEvent<HTMLInputElement>) => setHeight(e.target.value)}
+                    />
+
+                    <FormInput labelName={'Weight (kg):'} type={'text'} value={weight}
+                               onChange={(e:React.ChangeEvent<HTMLInputElement>) => setWeight(e.target.value)}
+                    />
+
+                    <FormInput labelName={'Seats:'} type={'text'} value={seats}
+                               onChange={(e:React.ChangeEvent<HTMLInputElement>) => setSeats(e.target.value)}
+                    />
+
+                    <FormInput labelName={'Fuel Tank Size (L):'} type={'text'} value={fuelTankSize}
+                               onChange={(e:React.ChangeEvent<HTMLInputElement>) => setFuelTankSize(e.target.value)}
+                    />
+
                     <div className="flex justify-between mt-4">
                         <button
                             type="button"
@@ -532,6 +330,7 @@ const CarUploadForm = () => {
                             />
                         </label>
                     </div>
+
                     <div>
                         <label>
                             Other Images:
