@@ -16,6 +16,7 @@ export const uploadImage = async (file: File,carName:string, imageCat:string, fo
         console.log('Image uploaded successfully:', filePath);
         return filePath;
     } catch (error) {
+        // @ts-ignore
         console.error('Error uploading image:', error.message);
         return null;
     }
