@@ -1,9 +1,10 @@
 'use client';
 import React, { useState } from 'react';
-import {addCar, addCarFeature, addCarImage} from '@/services/carsService';
+import { addCar, addCarFeature, addCarImage } from '@/services/carsService';
 import { uploadImage } from '@/services/storageService';
 
 const CarUploadForm = () => {
+    const [step, setStep] = useState(1);
     const [name, setName] = useState<string>('');
     const [brand, setBrand] = useState<string>('volkswagen');
     const [type, setType] = useState<string>('SUV');
@@ -130,344 +131,435 @@ const CarUploadForm = () => {
         }
     };
 
+    const nextStep = () => {
+        setStep(step + 1);
+    };
+
+    const prevStep = () => {
+        setStep(step - 1);
+    };
+
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label>
-                    Car Name:
-                    <input
-                        className={'text-black'}
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Brand:
-                    <select
-                        className={'text-black'}
-                        value={brand}
-                        onChange={(e) => setBrand(e.target.value)}
-                        required
-                    >
-                        {brands.map((brand) => (
-                            <option key={brand} value={brand}>
-                                {brand.charAt(0).toUpperCase() + brand.slice(1)}
-                            </option>
-                        ))}
-                    </select>
-                </label>
-            </div>
-            <div>
-                <label>
-                    Type:
-                    <select
-                        className={'text-black'}
-                        value={type}
-                        onChange={(e) => setType(e.target.value)}
-                        required
-                    >
-                        {types.map((type) => (
-                            <option key={type} value={type}>
-                                {type}
-                            </option>
-                        ))}
-                    </select>
-                </label>
-            </div>
-            <div>
-                <label>
-                    Manufacture Year:
-                    <input
-                        className={'text-black'}
-                        type="text"
-                        value={manufactureYear}
-                        onChange={(e) => setManufactureYear(e.target.value)}
-                        required
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Mileage:
-                    <input
-                        className={'text-black'}
-                        type="text"
-                        value={mileage}
-                        onChange={(e) => setMileage(e.target.value)}
-                        required
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Transmission:
-                    <select
-                        className={'text-black'}
-                        value={transmission}
-                        onChange={(e) => setTransmission(e.target.value)}
-                        required
-                    >
-                        {transmissions.map((transmission) => (
-                            <option key={transmission} value={transmission}>
-                                {transmission}
-                            </option>
-                        ))}
-                    </select>
-                </label>
-            </div>
-            <div>
-                <label>
-                    Fuel Type:
-                    <select
-                        className={'text-black'}
-                        value={fuel}
-                        onChange={(e) => setFuel(e.target.value)}
-                        required
-                    >
-                        {fuels.map((fuel) => (
-                            <option key={fuel} value={fuel}>
-                                {fuel}
-                            </option>
-                        ))}
-                    </select>
-                </label>
-            </div>
-            <div>
-                <label>
-                    Price:
-                    <input
-                        className={'text-black'}
-                        type="text"
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
-                        required
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Drive Type:
-                    <select
-                        className={'text-black'}
-                        value={driveType}
-                        onChange={(e) => setDriveType(e.target.value)}
-                        required
-                    >
-                        {driveTypes.map((driveType) => (
-                            <option key={driveType} value={driveType}>
-                                {driveType}
-                            </option>
-                        ))}
-                    </select>
-                </label>
-            </div>
-            <div>
-                <label>
-                    Condition:
-                    <select
-                        className={'text-black'}
-                        value={condition}
-                        onChange={(e) => setCondition(e.target.value)}
-                        required
-                    >
-                        {conditions.map((condition) => (
-                            <option key={condition} value={condition}>
-                                {condition.charAt(0).toUpperCase() + condition.slice(1)}
-                            </option>
-                        ))}
-                    </select>
-                </label>
-            </div>
-            <div>
-                <label>
-                    Engine Size (L):
-                    <input
-                        className={'text-black'}
-                        type="text"
-                        value={engineSize}
-                        onChange={(e) => setEngineSize(e.target.value)}
-                        required
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Doors:
-                    <select
-                        className={'text-black'}
-                        value={doors}
-                        onChange={(e) => setDoors(e.target.value)}
-                        required
-                    >
-                        {doorOptions.map((door) => (
-                            <option key={door} value={door}>
-                                {door}
-                            </option>
-                        ))}
-                    </select>
-                </label>
-            </div>
-            <div>
-                <label>
-                    Cylinders:
-                    <input
-                        className={'text-black'}
-                        type="text"
-                        value={cylinders}
-                        onChange={(e) => setCylinders(e.target.value)}
-                        required
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Color:
-                    <input
-                        className={'text-black'}
-                        type="text"
-                        value={color}
-                        onChange={(e) => setColor(e.target.value)}
-                        required
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    VIN:
-                    <input
-                        className={'text-black'}
-                        type="text"
-                        value={vin}
-                        onChange={(e) => setVin(e.target.value)}
-                        required
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Description:
-                    <textarea
-                        className={'text-black'}
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        required
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Length (mm):
-                    <input
-                        className={'text-black'}
-                        type="text"
-                        value={length}
-                        onChange={(e) => setLength(e.target.value)}
-                        required
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Width (mm):
-                    <input
-                        className={'text-black'}
-                        type="text"
-                        value={width}
-                        onChange={(e) => setWidth(e.target.value)}
-                        required
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Height (mm):
-                    <input
-                        className={'text-black'}
-                        type="text"
-                        value={height}
-                        onChange={(e) => setHeight(e.target.value)}
-                        required
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Weight (kg):
-                    <input
-                        className={'text-black'}
-                        type="text"
-                        value={weight}
-                        onChange={(e) => setWeight(e.target.value)}
-                        required
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Seats:
-                    <input
-                        className={'text-black'}
-                        type="text"
-                        value={seats}
-                        onChange={(e) => setSeats(e.target.value)}
-                        required
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Fuel Tank Size (L):
-                    <input
-                        className={'text-black'}
-                        type="text"
-                        value={fuelTankSize}
-                        onChange={(e) => setFuelTankSize(e.target.value)}
-                        required
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Main Image:
-                    <input
-                        className={'text-black'}
-                        type="file"
-                        accept="image/*"
-                        onChange={handleMainImageChange}
-                        required
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Other Images:
-                    <input
-                        className={'text-black'}
-                        type="file"
-                        accept="image/*"
-                        multiple
-                        onChange={handleOtherImagesChange}
-                    />
-                </label>
-            </div>
-            <div>
-                <label>Features:</label>
-                {featureOptions.map((feature) => (
-                    <div key={feature}>
-                        <input
-                            type="checkbox"
-                            value={feature}
-                            onChange={handleFeatureChange}
-                        />
-                        {feature}
+        <form onSubmit={handleSubmit} className="space-y-4">
+            {step === 1 && (
+                <div className="space-y-4">
+                    <div>
+                        <label>
+                            Car Name:
+                            <input
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                required
+                            />
+                        </label>
                     </div>
-                ))}
-            </div>
-            <button type="submit">Upload Car</button>
+                    <div>
+                        <label>
+                            Brand:
+                            <select
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                value={brand}
+                                onChange={(e) => setBrand(e.target.value)}
+                                required
+                            >
+                                {brands.map((brand) => (
+                                    <option key={brand} value={brand}>
+                                        {brand.charAt(0).toUpperCase() + brand.slice(1)}
+                                    </option>
+                                ))}
+                            </select>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Type:
+                            <select
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                value={type}
+                                onChange={(e) => setType(e.target.value)}
+                                required
+                            >
+                                {types.map((type) => (
+                                    <option key={type} value={type}>
+                                        {type}
+                                    </option>
+                                ))}
+                            </select>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Manufacture Year:
+                            <input
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                type="text"
+                                value={manufactureYear}
+                                onChange={(e) => setManufactureYear(e.target.value)}
+                                required
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Mileage:
+                            <input
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                type="text"
+                                value={mileage}
+                                onChange={(e) => setMileage(e.target.value)}
+                                required
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Transmission:
+                            <select
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                value={transmission}
+                                onChange={(e) => setTransmission(e.target.value)}
+                                required
+                            >
+                                {transmissions.map((transmission) => (
+                                    <option key={transmission} value={transmission}>
+                                        {transmission}
+                                    </option>
+                                ))}
+                            </select>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Fuel Type:
+                            <select
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                value={fuel}
+                                onChange={(e) => setFuel(e.target.value)}
+                                required
+                            >
+                                {fuels.map((fuel) => (
+                                    <option key={fuel} value={fuel}>
+                                        {fuel.charAt(0).toUpperCase() + fuel.slice(1)}
+                                    </option>
+                                ))}
+                            </select>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Price:
+                            <input
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                type="text"
+                                value={price}
+                                onChange={(e) => setPrice(e.target.value)}
+                                required
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Drive Type:
+                            <select
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                value={driveType}
+                                onChange={(e) => setDriveType(e.target.value)}
+                                required
+                            >
+                                {driveTypes.map((driveType) => (
+                                    <option key={driveType} value={driveType}>
+                                        {driveType}
+                                    </option>
+                                ))}
+                            </select>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Condition:
+                            <select
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                value={condition}
+                                onChange={(e) => setCondition(e.target.value)}
+                                required
+                            >
+                                {conditions.map((condition) => (
+                                    <option key={condition} value={condition}>
+                                        {condition.charAt(0).toUpperCase() + condition.slice(1)}
+                                    </option>
+                                ))}
+                            </select>
+                        </label>
+                    </div>
+                    <div className="flex justify-between mt-4">
+                        <button
+                            type="button"
+                            onClick={prevStep}
+                            className="bg-gray-500 text-white py-2 px-4 rounded"
+                        >
+                            Previous
+                        </button>
+                        <button
+                            type="button"
+                            onClick={nextStep}
+                            className="bg-blue-500 text-white py-2 px-4 rounded"
+                        >
+                            Next
+                        </button>
+                    </div>
+                </div>
+            )}
+            {step === 2 && (
+                <div className="space-y-4">
+                    <div>
+                        <label>
+                            Engine Size (L):
+                            <input
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                type="text"
+                                value={engineSize}
+                                onChange={(e) => setEngineSize(e.target.value)}
+                                required
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Doors:
+                            <select
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                value={doors}
+                                onChange={(e) => setDoors(e.target.value)}
+                                required
+                            >
+                                {doorOptions.map((door) => (
+                                    <option key={door} value={door}>
+                                        {door}
+                                    </option>
+                                ))}
+                            </select>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Cylinders:
+                            <input
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                type="text"
+                                value={cylinders}
+                                onChange={(e) => setCylinders(e.target.value)}
+                                required
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Color:
+                            <input
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                type="text"
+                                value={color}
+                                onChange={(e) => setColor(e.target.value)}
+                                required
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            VIN:
+                            <input
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                type="text"
+                                value={vin}
+                                onChange={(e) => setVin(e.target.value)}
+                                required
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Length (mm):
+                            <input
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                type="text"
+                                value={length}
+                                onChange={(e) => setLength(e.target.value)}
+                                required
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Width (mm):
+                            <input
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                type="text"
+                                value={width}
+                                onChange={(e) => setWidth(e.target.value)}
+                                required
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Height (mm):
+                            <input
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                type="text"
+                                value={height}
+                                onChange={(e) => setHeight(e.target.value)}
+                                required
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Weight (kg):
+                            <input
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                type="text"
+                                value={weight}
+                                onChange={(e) => setWeight(e.target.value)}
+                                required
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Seats:
+                            <input
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                type="text"
+                                value={seats}
+                                onChange={(e) => setSeats(e.target.value)}
+                                required
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Fuel Tank Size (L):
+                            <input
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                type="text"
+                                value={fuelTankSize}
+                                onChange={(e) => setFuelTankSize(e.target.value)}
+                                required
+                            />
+                        </label>
+                    </div>
+                    <div className="flex justify-between mt-4">
+                        <button
+                            type="button"
+                            onClick={prevStep}
+                            className="bg-gray-500 text-white py-2 px-4 rounded"
+                        >
+                            Previous
+                        </button>
+                        <button
+                            type="button"
+                            onClick={nextStep}
+                            className="bg-blue-500 text-white py-2 px-4 rounded"
+                        >
+                            Next
+                        </button>
+                    </div>
+                </div>
+            )}
+            {step === 3 && (
+                <div className="space-y-4">
+                    <div>
+                        <label>
+                            Description:
+                            <textarea
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                                required
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Features:
+                            <div className="grid grid-cols-2 gap-2">
+                                {featureOptions.map((feature) => (
+                                    <div key={feature}>
+                                        <label className="flex items-center space-x-2">
+                                            <input
+                                                type="checkbox"
+                                                value={feature}
+                                                checked={features.includes(feature)}
+                                                onChange={handleFeatureChange}
+                                            />
+                                            <span>{feature}</span>
+                                        </label>
+                                    </div>
+                                ))}
+                            </div>
+                        </label>
+                    </div>
+                    <div className="flex justify-between mt-4">
+                        <button
+                            type="button"
+                            onClick={prevStep}
+                            className="bg-gray-500 text-white py-2 px-4 rounded"
+                        >
+                            Previous
+                        </button>
+                        <button
+                            type="button"
+                            onClick={nextStep}
+                            className="bg-blue-500 text-white py-2 px-4 rounded"
+                        >
+                            Next
+                        </button>
+                    </div>
+                </div>
+            )}
+            {step === 4 && (
+                <div className="space-y-4">
+                    <div>
+                        <label>
+                            Main Image:
+                            <input
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                type="file"
+                                onChange={handleMainImageChange}
+                                required
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Other Images:
+                            <input
+                                className="border border-gray-300 rounded p-2 w-full text-black"
+                                type="file"
+                                multiple
+                                onChange={handleOtherImagesChange}
+                            />
+                        </label>
+                    </div>
+                    <div className="flex justify-between mt-4">
+                        <button
+                            type="button"
+                            onClick={prevStep}
+                            className="bg-gray-500 text-white py-2 px-4 rounded"
+                        >
+                            Previous
+                        </button>
+                        <button
+                            type="submit"
+                            className="bg-green-500 text-white py-2 px-4 rounded"
+                        >
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            )}
         </form>
     );
 };
