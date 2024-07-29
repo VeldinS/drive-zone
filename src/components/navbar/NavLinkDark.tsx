@@ -2,7 +2,7 @@ import React from 'react';
 import Link from "next/link";
 import Image from "next/image";
 
-import downArrow from '@/assets/icons/down arrow.svg';
+import downArrow from '@/assets/icons/down arrow-dark.svg';
 import {StaticImport} from "next/dist/shared/lib/get-img-props";
 
 interface navLinkProps {
@@ -23,7 +23,7 @@ interface navLinkProps {
     dropdownItem6Icon?: StaticImport | string,
 }
 
-function NavLink(navlinkProps: navLinkProps) {
+function NavLinkDark(navlinkProps: navLinkProps) {
     return (
         <div className="hidden lg:flex relative group">
             {!navlinkProps.dropdown && (
@@ -100,4 +100,4 @@ function NavLink(navlinkProps: navLinkProps) {
     );
 }
 
-export default NavLink;
+export default NavLinkDark;

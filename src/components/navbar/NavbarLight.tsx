@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 
 import Image from "next/image";
 
-import NavLink from "@/components/navbar/NavLink";
+import NavLinkDark from "@/components/navbar/NavLinkDark";
 
-import logo from '@/assets/logo/Logo.png';
+import logo from '@/assets/logo/Logo-dark.png';
 import user_w from '@/assets/icons/user-w.svg';
 import user_b from '@/assets/icons/user-b.svg';
 
@@ -34,7 +34,7 @@ interface navbarProps{
     bgColor: string
 }
 
-function Navbar(navProps: navbarProps) {
+function NavbarLight(navProps: navbarProps) {
 
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -57,31 +57,31 @@ function Navbar(navProps: navbarProps) {
         <nav className={`${isScrolled ? 'bg-white lg:bg-black bg-opacity-100 lg:bg-opacity-10 backdrop-blur-md' : `bg-[${navProps.bgColor}]`} fixed z-[999] top-0 w-full h-auto py-4 px-[3%] lg:px-[5%] flex flex-row justify-between items-center transition-all duration-500`}>
             <div className={'flex flex-row justify-start items-center gap-6'}>
                 <Image src={logo} alt="Logo image." width="150"/>
-                <NavLink dropdown={true} name={'Home'}
-                         dropdownItem1={'About Us'} dropdownItem1Icon={about}
-                         dropdownItem2={'Sell Car'} dropdownItem2Icon={sell}
-                         dropdownItem3={'Buy Car'} dropdownItem3Icon={buy}
-                         dropdownItem4={'Popular'} dropdownItem4Icon={popular}
-                         dropdownItem5={'Contact Us'} dropdownItem5Icon={contact}
+                <NavLinkDark dropdown={true} name={'Home'}
+                             dropdownItem1={'About Us'} dropdownItem1Icon={about}
+                             dropdownItem2={'Sell Car'} dropdownItem2Icon={sell}
+                             dropdownItem3={'Buy Car'} dropdownItem3Icon={buy}
+                             dropdownItem4={'Popular'} dropdownItem4Icon={popular}
+                             dropdownItem5={'Contact Us'} dropdownItem5Icon={contact}
                 />
-                <NavLink dropdown={true} name={'Brands'}
-                         dropdownItem1={'Volkswagen'} dropdownItem1Icon={volkswagen}
-                         dropdownItem2={'Audi'} dropdownItem2Icon={audi}
-                         dropdownItem3={'Toyota'} dropdownItem3Icon={toyota}
-                         dropdownItem4={'BMW'} dropdownItem4Icon={bmw}
-                         dropdownItem5={'Volvo'} dropdownItem5Icon={volvo}
-                         dropdownItem6={'Mercedes'} dropdownItem6Icon={mercedes}
+                <NavLinkDark dropdown={true} name={'Brands'}
+                             dropdownItem1={'Volkswagen'} dropdownItem1Icon={volkswagen}
+                             dropdownItem2={'Audi'} dropdownItem2Icon={audi}
+                             dropdownItem3={'Toyota'} dropdownItem3Icon={toyota}
+                             dropdownItem4={'BMW'} dropdownItem4Icon={bmw}
+                             dropdownItem5={'Volvo'} dropdownItem5Icon={volvo}
+                             dropdownItem6={'Mercedes'} dropdownItem6Icon={mercedes}
                 />
-                <NavLink dropdown={true} name={'Types'}
-                         dropdownItem1={'SUV'} dropdownItem1Icon={suv}
-                         dropdownItem2={'Sedan'} dropdownItem2Icon={sedan}
-                         dropdownItem3={'Hatchback'} dropdownItem3Icon={hatchback}
-                         dropdownItem4={'Coupe'} dropdownItem4Icon={coupe}
-                         dropdownItem5={'Hybrid'} dropdownItem5Icon={hybrid}
+                <NavLinkDark dropdown={true} name={'Types'}
+                             dropdownItem1={'SUV'} dropdownItem1Icon={suv}
+                             dropdownItem2={'Sedan'} dropdownItem2Icon={sedan}
+                             dropdownItem3={'Hatchback'} dropdownItem3Icon={hatchback}
+                             dropdownItem4={'Coupe'} dropdownItem4Icon={coupe}
+                             dropdownItem5={'Hybrid'} dropdownItem5Icon={hybrid}
                 />
-                <NavLink dropdown={false} to={'/cars'} name={'All Cars'}/>
-                <NavLink dropdown={false} to={'/about'} name={'About'}/>
-                <NavLink dropdown={false} to={'/contact'} name={'Contact'}/>
+                <NavLinkDark dropdown={false} to={'/cars'} name={'All Cars'}/>
+                <NavLinkDark dropdown={false} to={'/about'} name={'About'}/>
+                <NavLinkDark dropdown={false} to={'/contact'} name={'Contact'}/>
             </div>
             <div className={'flex flex-row justify-center items-center gap-6'}>
                 <Link href={'sign-in'}
@@ -101,4 +101,4 @@ function Navbar(navProps: navbarProps) {
     );
 }
 
-export default Navbar;
+export default NavbarLight;
